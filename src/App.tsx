@@ -62,6 +62,12 @@ function App() {
     setCart(updatedCart);
   }
 
+  function removeFromCart(id: number) {
+    const updatedCart = cart.filter((item) => item.id !== id);
+
+    setCart(updatedCart);
+  }
+
   const cartTotal = cart.reduce((total, item) => {
     return total + item.price * item.quantity;
   }, 0);
@@ -97,6 +103,7 @@ function App() {
               item={item}
               decreaseQuantity={decreaseQuantity}
               increaseQuantity={increaseQuantity}
+              removeFromCart={removeFromCart}
             />
           ))}
 

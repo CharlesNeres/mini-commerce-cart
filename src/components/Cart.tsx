@@ -1,4 +1,4 @@
-function Cart({ item, decreaseQuantity, increaseQuantity }) {
+function Cart({ item, decreaseQuantity, increaseQuantity, removeFromCart }) {
   return (
     <article className="cart-item">
       <div>
@@ -12,6 +12,14 @@ function Cart({ item, decreaseQuantity, increaseQuantity }) {
       </div>
 
       <strong>${(item.price * item.quantity).toFixed(2)}</strong>
+      <p>
+        <button
+          className="remove-button"
+          onClick={() => removeFromCart(item.id)}
+        >
+          X
+        </button>
+      </p>
     </article>
   );
 }
