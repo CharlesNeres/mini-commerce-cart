@@ -28,6 +28,38 @@ function App() {
     setCart([...cart, { ...product, quantity: 1 }]);
   }
 
+  function decreaseQuantity(id: number) {
+    const updatedCart = cart
+      .map((item) => {
+        if (item.id === id) {
+          return {
+            ...item,
+            quantity: item.quantity - 1,
+          };
+        }
+
+        return item;
+      })
+      .filter((item) => item.quantity > 0);
+
+    setCart(updatedCart);
+  }
+
+  function increaseQuantity(id: number) {
+    const updatedCart = cart.map((item) => {
+      if (item.id === id) {
+        return {
+          ...item,
+          quantity: item.quantity + 1,
+        };
+      }
+
+      return item;
+    });
+
+    setCart(updatedCart);
+  }
+
   return (
     <main>
       <h1>Mini Commerce Cart</h1>
@@ -51,7 +83,11 @@ function App() {
           <article key={item.id} className="cart-item">
             <div>
               <h3>{item.name}</h3>
-              <p>Quantity: {item.quantity}</p>
+              <div className="quantity-controls">
+                <button onClick={() => decreaseQuantity(item.id)}>-</button>
+                <span>{item.quantity}</span>
+                <button onClick={() => increaseQuantity(item.id)}>+</button>
+              </div>
             </div>
 
             <strong>${(item.price * item.quantity).toFixed(2)}</strong>
