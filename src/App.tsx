@@ -69,37 +69,47 @@ function App() {
       <h1>Mini Commerce Cart</h1>
       <p>Shopping cart project with React and TypeScript.</p>
 
-      <section className="products">
-        {products.map((product) => (
-          <article className="product-card" key={product.id}>
-            <span className="product-image">{product.image}</span>
-            <h2>{product.name}</h2>
-            <p>{product.category}</p>
-            <strong>${product.price.toFixed(2)}</strong>
-            <button onClick={() => addToCart(product)}>Add to cart</button>
-          </article>
-        ))}
-      </section>
+      <div className="app-layout">
+        <section>
+          <h2>Products</h2>
 
-      <section className="cart">
-        <h2>Cart</h2>
-        {cart.map((item) => (
-          <article key={item.id} className="cart-item">
-            <div>
-              <h3>{item.name}</h3>
-              <div className="quantity-controls">
-                <button onClick={() => decreaseQuantity(item.id)}>-</button>
-                <span>{item.quantity}</span>
-                <button onClick={() => increaseQuantity(item.id)}>+</button>
+          <section className="products">
+            {products.map((product) => (
+              <article className="product-card" key={product.id}>
+                <span className="product-image">{product.image}</span>
+                <h2>{product.name}</h2>
+                <p>{product.category}</p>
+                <strong>${product.price.toFixed(2)}</strong>
+                <button onClick={() => addToCart(product)}>Add to cart</button>
+              </article>
+            ))}
+          </section>
+        </section>
+
+        <section className="cart">
+          <h2>Cart</h2>
+
+          {cart.length === 0 && <p>Your cart is empty.</p>}
+
+          {cart.map((item) => (
+            <article key={item.id} className="cart-item">
+              <div>
+                <h3>{item.name}</h3>
+
+                <div className="quantity-controls">
+                  <button onClick={() => decreaseQuantity(item.id)}>-</button>
+                  <span>{item.quantity}</span>
+                  <button onClick={() => increaseQuantity(item.id)}>+</button>
+                </div>
               </div>
-            </div>
 
-            <strong>${(item.price * item.quantity).toFixed(2)}</strong>
-          </article>
-        ))}
+              <strong>${(item.price * item.quantity).toFixed(2)}</strong>
+            </article>
+          ))}
 
-        <h2>Total: ${cartTotal.toFixed(2)}</h2>
-      </section>
+          <h2>Total: ${cartTotal.toFixed(2)}</h2>
+        </section>
+      </div>
     </main>
   );
 }
