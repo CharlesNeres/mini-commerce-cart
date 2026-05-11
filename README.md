@@ -92,6 +92,10 @@ This project was created to practice:
 
 ---
 
+## Live Demo
+
+https://mini-commerce-cart.vercel.app
+
 ## 👨‍💻 Author
 
 Charles Junior
