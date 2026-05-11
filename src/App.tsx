@@ -1,4 +1,6 @@
 import "./App.css";
+import Cart from "./components/Cart";
+import ProductCart from "./components/ProductCard";
 import { products } from "./data/products";
 import { useState } from "react";
 
@@ -75,13 +77,11 @@ function App() {
 
           <section className="products">
             {products.map((product) => (
-              <article className="product-card" key={product.id}>
-                <span className="product-image">{product.image}</span>
-                <h2>{product.name}</h2>
-                <p>{product.category}</p>
-                <strong>${product.price.toFixed(2)}</strong>
-                <button onClick={() => addToCart(product)}>Add to cart</button>
-              </article>
+              <ProductCart
+                key={product.id}
+                product={product}
+                addToCart={addToCart}
+              />
             ))}
           </section>
         </section>
@@ -92,19 +92,12 @@ function App() {
           {cart.length === 0 && <p>Your cart is empty.</p>}
 
           {cart.map((item) => (
-            <article key={item.id} className="cart-item">
-              <div>
-                <h3>{item.name}</h3>
-
-                <div className="quantity-controls">
-                  <button onClick={() => decreaseQuantity(item.id)}>-</button>
-                  <span>{item.quantity}</span>
-                  <button onClick={() => increaseQuantity(item.id)}>+</button>
-                </div>
-              </div>
-
-              <strong>${(item.price * item.quantity).toFixed(2)}</strong>
-            </article>
+            <Cart
+              key={item.id}
+              item={item}
+              decreaseQuantity={decreaseQuantity}
+              increaseQuantity={increaseQuantity}
+            />
           ))}
 
           <h2>Total: ${cartTotal.toFixed(2)}</h2>
