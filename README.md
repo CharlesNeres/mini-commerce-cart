@@ -4,7 +4,7 @@ A responsive shopping cart application built with React and TypeScript.
 
 ## 📸 Preview
 
-(Add screenshots here later)
+![Desktop Preview](./public/screenshots/desktop.png)
 
 ---
 
