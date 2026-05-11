@@ -100,7 +100,10 @@ function App() {
             />
           ))}
 
-          <h2>Total: ${cartTotal.toFixed(2)}</h2>
+          <div className="cart-total">
+            <span>Total</span>
+            <strong>${cartTotal.toFixed(2)}</strong>
+          </div>
         </section>
       </div>
     </main>
