@@ -1,4 +1,4 @@
-function ProductCart({ product, addToCart }) {
+function ProductCart({ product, addToCart }: any) {
   return (
     <article className="product-card">
       <span className="product-image">{product.image}</span>

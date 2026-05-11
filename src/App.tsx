@@ -5,9 +5,9 @@ import { products } from "./data/products";
 import { useState } from "react";
 
 function App() {
-  const [cart, setCart] = useState([]);
+  const [cart, setCart] = useState<any[]>([]);
 
-  function addToCart(product) {
+  function addToCart(product: any) {
     const productExists = cart.find((item) => item.id === product.id);
 
     if (productExists) {

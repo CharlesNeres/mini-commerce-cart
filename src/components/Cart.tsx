@@ -1,4 +1,9 @@
-function Cart({ item, decreaseQuantity, increaseQuantity, removeFromCart }) {
+function Cart({
+  item,
+  decreaseQuantity,
+  increaseQuantity,
+  removeFromCart,
+}: any) {
   return (
     <article className="cart-item">
       <div>
