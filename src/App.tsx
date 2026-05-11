@@ -60,6 +60,10 @@ function App() {
     setCart(updatedCart);
   }
 
+  const cartTotal = cart.reduce((total, item) => {
+    return total + item.price * item.quantity;
+  }, 0);
+
   return (
     <main>
       <h1>Mini Commerce Cart</h1>
@@ -93,6 +97,8 @@ function App() {
             <strong>${(item.price * item.quantity).toFixed(2)}</strong>
           </article>
         ))}
+
+        <h2>Total: ${cartTotal.toFixed(2)}</h2>
       </section>
     </main>
   );
